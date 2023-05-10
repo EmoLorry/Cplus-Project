@@ -112,6 +112,8 @@ void Widget::on_pushButton_4_clicked()
 //下一首
 void Widget::on_pushButton_7_clicked()
 {
+    if(playlist.empty())
+         return;
     cpindex=(cpindex+1)%playlist.size();
     ui->listWidget->setCurrentRow(cpindex);
     mediaplayer->setSource(playlist[cpindex]);
@@ -121,6 +123,8 @@ void Widget::on_pushButton_7_clicked()
 //上一首
 void Widget::on_pushButton_3_clicked()
 {
+    if(playlist.empty())
+         return;
     if(cpindex==0)
     {
     cpindex=playlist.size()-1 ;
