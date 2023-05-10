@@ -29,11 +29,11 @@ Widget::Widget(QWidget *parent)
 
      //获取当前播放音乐总时长，通过信号关联来获取
      connect(mediaplayer,&QMediaPlayer::durationChanged,this,[=](qint64 duration)
-             {ui->labels->setText(QString("%1:%2").arg(duration/1000/60).arg((duration/1000)%60));}
+             {ui->labels->setText(QString("%1:%2").arg(duration/1000/60,2,10,QChar('0')).arg((duration/1000)%60,2,10,QChar('0')));}
              );
     //获取当前播放时长
      connect(mediaplayer,&QMediaPlayer::positionChanged,this,[=](qint64 position)
-             {ui->labelc->setText(QString("%1:%2").arg(position/1000/60).arg((position/1000)%60));}
+             {ui->labelc->setText(QString("%1:%2").arg(position/1000/60,2,10,QChar('0')).arg((position/1000)%60,2,10,QChar('0')));}
              );
 
 }
