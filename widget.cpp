@@ -27,6 +27,14 @@ Widget::Widget(QWidget *parent)
     //播放(测试）
     //mediaPlayer->play();
 
+     //获取当前播放音乐总时长，通过信号关联来获取
+     connect(mediaplayer,&QMediaPlayer::durationChanged,this,[=](qint64 duration)
+             {ui->labels->setText(QString("%1:%2").arg(duration/1000/60).arg((duration/1000)%60));}
+             );
+    //获取当前播放时长
+     connect(mediaplayer,&QMediaPlayer::positionChanged,this,[=](qint64 position)
+             {ui->labelc->setText(QString("%1:%2").arg(position/1000/60).arg((position/1000)%60));}
+             );
 
 }
 
