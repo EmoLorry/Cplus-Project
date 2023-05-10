@@ -41,6 +41,9 @@ Widget::Widget(QWidget *parent)
              );
     //拖动滑块改变进度
      connect(ui->pcslider,&QSlider::sliderMoved,mediaplayer,&QMediaPlayer::setPosition);
+    //更改音量大小
+     audiooutput->setVolume(0.5);//[0,1]
+     connect(ui->voslider,&QSlider::sliderMoved,audiooutput,&QAudioOutput::setVolume);
 }
 
 Widget::~Widget()

@@ -85,8 +85,8 @@
   <widget class="QPushButton" name="pushButton_8">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>430</y>
+     <x>310</x>
+     <y>10</y>
      <width>61</width>
      <height>61</height>
     </rect>
@@ -179,6 +179,19 @@
     <string>00：00</string>
    </property>
   </widget>
+  <widget class="QSlider" name="voslider">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>0</y>
+     <width>16</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
   <zorder>pushButton_4</zorder>
   <zorder>pushButton_7</zorder>
   <zorder>pushButton_8</zorder>
@@ -189,6 +202,7 @@
   <zorder>pushButton_3</zorder>
   <zorder>labelc</zorder>
   <zorder>labels</zorder>
+  <zorder>voslider</zorder>
  </widget>
  <resources/>
  <connections/>
