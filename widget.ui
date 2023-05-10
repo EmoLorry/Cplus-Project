@@ -140,7 +140,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QSlider" name="horizontalSlider">
+  <widget class="QSlider" name="pcslider">
    <property name="geometry">
     <rect>
      <x>10</x>
@@ -185,7 +185,7 @@
   <zorder>pushButton</zorder>
   <zorder>pushButton_2</zorder>
   <zorder>listWidget</zorder>
-  <zorder>horizontalSlider</zorder>
+  <zorder>pcslider</zorder>
   <zorder>pushButton_3</zorder>
   <zorder>labelc</zorder>
   <zorder>labels</zorder>
