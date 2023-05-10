@@ -119,4 +119,10 @@ void Widget::on_pushButton_3_clicked()
     }
 }
 
+void Widget::on_listWidget_doubleClicked(const QModelIndex &index)
+{
+    cpindex = index.row();
+    mediaplayer->setSource(playlist[cpindex]);
+    mediaplayer->play();
+}
 
