@@ -94,16 +94,29 @@ void Widget::on_pushButton_4_clicked()
 //下一首
 void Widget::on_pushButton_7_clicked()
 {
-    cpindex++;
+    cpindex=(cpindex+1)%playlist.size();
     ui->listWidget->setCurrentRow(cpindex);
     mediaplayer->setSource(playlist[cpindex]);
+    mediaplayer->play();
 }
 
 //上一首
 void Widget::on_pushButton_3_clicked()
 {
-    cpindex--;
+    if(cpindex==0)
+    {
+    cpindex=playlist.size()-1 ;
     ui->listWidget->setCurrentRow(cpindex);
     mediaplayer->setSource(playlist[cpindex]);
+    mediaplayer->play();
+    }
+    else
+    {
+    cpindex=(cpindex-1);
+    ui->listWidget->setCurrentRow(cpindex);
+    mediaplayer->setSource(playlist[cpindex]);
+    mediaplayer->play();
+    }
 }
+
 
