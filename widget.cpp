@@ -73,6 +73,8 @@ void Widget::on_pushButton_clicked()
 
 void Widget::on_pushButton_4_clicked()
 {
+    if(playlist.empty())
+        return;
     switch(mediaplayer->playbackState())
     {
     case QMediaPlayer:: PlaybackState::StoppedState:
