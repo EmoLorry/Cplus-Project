@@ -69,9 +69,9 @@ void Widget::on_pushButton_4_clicked()
     {
     case QMediaPlayer:: PlaybackState::StoppedState:
     { //播放当前选中的音乐 首先获取选中的行号
-        int index=ui->listWidget->currentRow();
+        cpindex=ui->listWidget->currentRow();
         //播放对应音乐
-        mediaplayer->setSource(playlist[index]);
+        mediaplayer->setSource(playlist[cpindex]);
         mediaplayer->play();
         break;
     }
@@ -89,5 +89,21 @@ void Widget::on_pushButton_4_clicked()
     }
 
     //我们需要设置：如果正在播放点击就暂停，反之就播放，通过函数获取播放状态
+}
+
+//下一首
+void Widget::on_pushButton_7_clicked()
+{
+    cpindex++;
+    ui->listWidget->setCurrentRow(cpindex);
+    mediaplayer->setSource(playlist[cpindex]);
+}
+
+//上一首
+void Widget::on_pushButton_3_clicked()
+{
+    cpindex--;
+    ui->listWidget->setCurrentRow(cpindex);
+    mediaplayer->setSource(playlist[cpindex]);
 }
 

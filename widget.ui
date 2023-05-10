@@ -153,6 +153,14 @@
     <enum>Qt::Horizontal</enum>
    </property>
   </widget>
+  <zorder>pushButton_4</zorder>
+  <zorder>pushButton_7</zorder>
+  <zorder>pushButton_8</zorder>
+  <zorder>pushButton</zorder>
+  <zorder>pushButton_2</zorder>
+  <zorder>listWidget</zorder>
+  <zorder>horizontalSlider</zorder>
+  <zorder>pushButton_3</zorder>
  </widget>
  <resources/>
  <connections/>

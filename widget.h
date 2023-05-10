@@ -28,10 +28,15 @@ private slots:
 
     void on_pushButton_4_clicked();
 
+    void on_pushButton_7_clicked();
+
+    void on_pushButton_3_clicked();
+
 private:
     Ui::Widget *ui;
      QList<QUrl> playlist;//播放列表
     QAudioOutput*audiooutput;
     QMediaPlayer*mediaplayer;
+    int cpindex=0;
 };
 #endif // WIDGET_H
