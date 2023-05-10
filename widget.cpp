@@ -1,3 +1,4 @@
+#include <QAudioOutput>
 #include "widget.h"
 #include "ui_widget.h"
 #include <QDebug>
@@ -5,7 +6,7 @@
 #include <QListWidget>
 #include <QListView>
 #include <QtMultimedia/QtMultimedia>
-#include <QAudioOutput>
+#include <QUrl>
 
 
 Widget::Widget(QWidget *parent)
@@ -15,15 +16,18 @@ Widget::Widget(QWidget *parent)
     ui->setupUi(this);
     //如何播放音乐 先加载multimedia
     //先 new 出 output对象
-    auto audioOutput =new QAudioOutput(this);
+     audiooutput =new QAudioOutput(this);
     //再一个媒体播放对象
-    auto mediaPlayer =new QMediaPlayer(this);
-    mediaPlayer->setAudioOutput(audioOutput);
+     mediaplayer =new QMediaPlayer(this);
+     mediaplayer->setAudioOutput(audiooutput);
 
+    //历史代码
     //给播放器设置音乐
-    mediaPlayer->setSource(QUrl::fromLocalFile("C:\\Users\\28301\\Desktop\\Music\\Alex Goot,Madilyn Bailey - Something Just Like This.mp3"));
-    //播放
-    mediaPlayer->play();
+    //mediaPlayer->setSource(QUrl::fromLocalFile("C:\\Users\\28301\\Desktop\\Music\\Alex Goot,Madilyn Bailey - Something Just Like This.mp3"));
+    //播放(测试）
+    //mediaPlayer->play();
+
+
 }
 
 Widget::~Widget()
@@ -36,17 +40,35 @@ Widget::~Widget()
 
 void Widget::on_pushButton_clicked()
 {
-    qInfo()<<"hd";
+    qInfo()<<"导入本地音乐文件";
 
     //打开文件对话框，让用户选择音乐所在目录
     auto path=QFileDialog::getExistingDirectory(this,"选择音乐所在目录""C://Users//28301//Desktop//Music");
     //根据路径，获取其中所有音乐文件
     QDir dir(path);
-    auto musicList=dir.entryList(QStringList()<<"*.mp3"<<"*.wav");
+    auto musicList=dir.entryList(QStringList()<<"*.mp3"<<"*.wav");//仅仅把音乐名字是在listWidget中展示
     qInfo()<<musicList;
     ui->listWidget->addItems(musicList);
     //将音乐上传到界面中
 
+    //默认选中第一个音乐
+    ui->listWidget->setCurrentRow(0);
 
+    //将音乐完整路径保存起来（通过遍历音乐列表中中的所有音乐）
+    for(auto file :musicList)
+        playlist.append(QUrl::fromLocalFile(path+"/"+file));
+
+
+
+}
+
+
+void Widget::on_pushButton_4_clicked()
+{
+    //播放当前选中的音乐 首先获取选中的行号
+    int index=ui->listWidget->currentRow();
+    //播放对应音乐
+    mediaplayer->setSource(playlist[index]);
+    mediaplayer->play();
 }
 
