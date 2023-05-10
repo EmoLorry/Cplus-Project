@@ -2,6 +2,8 @@
 #include "ui_widget.h"
 #include <QDebug>
 #include <QFileDialog>
+#include <QListWidget>
+#include <QListView>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -28,6 +30,7 @@ void Widget::on_pushButton_clicked()
     QDir dir(path);
     auto musicList=dir.entryList(QStringList()<<"*.mp3"<<"*.wav");
     qInfo()<<musicList;
-
+    ui->listWidget->addItems(musicList);
+    //将音乐上传到界面中
 }
 
