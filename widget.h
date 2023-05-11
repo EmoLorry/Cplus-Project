@@ -5,6 +5,7 @@
 #include <QUrl>
 class QMediaPlayer;
 class QAudioOutput;
+class QTimer;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class Widget; }
@@ -30,15 +31,19 @@ private slots:
 
     void on_pushButton_3_clicked();
 
-    void on_listWidget_doubleClicked(const QModelIndex &index);
+    void on_listWidget_doubleClicked(const QModelIndex &);
 
     void on_pushButton_8_clicked();
 
+    void nextmusic();
+
 private:
     Ui::Widget *ui;
-     QList<QUrl> playlist;//播放列表
-    QAudioOutput*audiooutput;
-    QMediaPlayer*mediaplayer;
+    QList<QUrl> playlist;//播放列表
+    QAudioOutput *audiooutput;
+    QMediaPlayer *mediaplayer;
+    QTimer *timer;
     int cpindex=0;
+
 };
 #endif // WIDGET_H

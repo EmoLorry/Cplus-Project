@@ -21,4 +21,25 @@
         <file>C:/Users/28301/Desktop/assets/182712.png</file>
         <file>C:/Users/28301/Desktop/assets/182746.png</file>
     </qresource>
+    <qresource prefix="/new/prefix2">
+        <file>C:/Users/28301/Desktop/assets/194559.png</file>
+        <file>C:/Users/28301/Desktop/assets/123907.png</file>
+        <file>C:/Users/28301/Desktop/assets/163418.png</file>
+        <file>C:/Users/28301/Desktop/assets/163633.png</file>
+        <file>C:/Users/28301/Desktop/assets/163649.png</file>
+        <file>C:/Users/28301/Desktop/assets/163745.png</file>
+        <file>C:/Users/28301/Desktop/assets/163804.png</file>
+        <file>C:/Users/28301/Desktop/assets/163822.png</file>
+        <file>C:/Users/28301/Desktop/assets/175020.png</file>
+        <file>C:/Users/28301/Desktop/assets/182712.png</file>
+        <file>C:/Users/28301/Desktop/assets/182746.png</file>
+        <file>C:/Users/28301/Desktop/assets/183528.png</file>
+        <file>C:/Users/28301/Desktop/assets/195146.png</file>
+        <file>C:/Users/28301/Desktop/assets/195539.png</file>
+    </qresource>
+    <qresource prefix="/new/prefix3">
+        <file>C:/Users/28301/Desktop/assets/200057.png</file>
+        <file>C:/Users/28301/Desktop/assets/200408.png</file>
+        <file>C:/Users/28301/Desktop/assets/200604.png</file>
+    </qresource>
 </RCC>

@@ -3,4 +3,8 @@
         <file>C:/Users/28301/Desktop/assets/182712.png</file>
         <file>C:/Users/28301/Desktop/assets/182746.png</file>
     </qresource>
+    <qresource prefix="/new/prefix1">
+        <file>C:/Users/28301/Desktop/assets/195146.png</file>
+        <file>C:/Users/28301/Desktop/assets/200923.png</file>
+    </qresource>
 </RCC>

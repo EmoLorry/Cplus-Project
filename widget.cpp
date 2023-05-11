@@ -7,14 +7,23 @@
 #include <QListView>
 #include <QtMultimedia/QtMultimedia>
 #include <QUrl>
-
+#include <QTimer>
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
 {
     ui->setupUi(this);
-    //如何播放音乐 先加载multimedia
+
+    //设置程序图标与小名称
+    setWindowIcon(QIcon("C:\\Users\\28301\\Desktop\\assets\\203839.png"));
+    setWindowTitle("音乐播放器2.0");
+
+    //设置计时器
+    QTimer *timer=new QTimer(this);
+    connect(timer,SIGNAL(timeout()),this,SLOT(nextmusic()));
+    timer->start(1000);
+
     //先 new 出 output对象
      audiooutput =new  QAudioOutput(this);
     //再一个媒体播放对象
@@ -28,16 +37,13 @@ Widget::Widget(QWidget *parent)
              }
              );
     //获取当前播放时长（同时增加滑块因素）
-     connect(mediaplayer,&QMediaPlayer::positionChanged,this,[=](qint64 position)
-             {ui->labelc->setText(QString("%1:%2").arg(position/1000/60,2,10,QChar('0')).arg((position/1000)%60,2,10,QChar('0')));
-              ui->pcslider->setValue(position);
+     connect(mediaplayer,&QMediaPlayer::positionChanged,this,[=](qint64 proposition)
+             {ui->labelc->setText(QString("%1:%2").arg(proposition/1000/60,2,10,QChar('0')).arg((proposition/1000)%60,2,10,QChar('0')));
+              ui->pcslider->setValue(proposition);
              }
              );
     //拖动滑块改变进度
      connect(ui->pcslider,&QSlider::sliderMoved,mediaplayer,&QMediaPlayer::setPosition);
-    //更改音量大小
-     //audiooutput->setVolume(0.5);//[0,1]
-     //connect(ui->voslider,&QSlider::sliderMoved,audiooutput,&QAudioOutput::setVolume);
 
 }
 
@@ -46,21 +52,30 @@ Widget::~Widget()
     delete ui;
 }
 
+void Widget::nextmusic()
+{
+    if((ui->labelc->text()==ui->labels->text())&&ui->labels->text()!="00:00")
+    {
+        cpindex=(cpindex+1)%playlist.size();
+        ui->listWidget->setCurrentRow(cpindex);
+        mediaplayer->setSource(playlist[cpindex]);
+        mediaplayer->play();
+    }
 
+}
 
-
+//
 void Widget::on_pushButton_clicked()
 {
     qInfo()<<"导入本地音乐文件";
-
     //打开文件对话框，让用户选择音乐所在目录
-    auto path=QFileDialog::getExistingDirectory(this,"选择音乐所在目录""C:");
+    auto path=QFileDialog::getExistingDirectory(this,"选择音乐所在文件夹""C:");
     //根据路径，获取其中所有音乐文件
     QDir dir(path);
-    auto musicList=dir.entryList(QStringList()<<"*.mp3"<<"*.wav");//仅仅把音乐名字是在listWidget中展示
+    auto musicList=dir.entryList(QStringList()<<"*.mp3"<<"*.wav");
     qInfo()<<musicList;
     ui->listWidget->addItems(musicList);
-    //将音乐上传到界面中
+    //将音乐上传到界面中,仅仅把音乐名字是在listWidget中展示
 
     //默认选中第一个音乐
     ui->listWidget->setCurrentRow(0);
@@ -69,9 +84,10 @@ void Widget::on_pushButton_clicked()
     for(auto file :musicList)
         playlist.append(QUrl::fromLocalFile(path+"/"+file));
 
+
 }
 
-
+//播放键
 void Widget::on_pushButton_4_clicked()
 {
     if(playlist.empty())
@@ -137,6 +153,7 @@ void Widget::on_pushButton_3_clicked()
     }
 }
 
+//双击切换
 void Widget::on_listWidget_doubleClicked(const QModelIndex &index)
 {
     cpindex = index.row();
@@ -145,7 +162,7 @@ void Widget::on_listWidget_doubleClicked(const QModelIndex &index)
     ui->pushButton_4->setStyleSheet("background-image: url(:/C:/Users/28301/Desktop/assets/123907.png);");
 }
 
-
+//声音开关键
 void Widget::on_pushButton_8_clicked()
 {
     if(playlist.empty())
