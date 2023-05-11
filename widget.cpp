@@ -16,16 +16,10 @@ Widget::Widget(QWidget *parent)
     ui->setupUi(this);
     //如何播放音乐 先加载multimedia
     //先 new 出 output对象
-     audiooutput =new QAudioOutput(this);
+     audiooutput =new  QAudioOutput(this);
     //再一个媒体播放对象
-     mediaplayer =new QMediaPlayer(this);
+     mediaplayer =new  QMediaPlayer(this);
      mediaplayer->setAudioOutput(audiooutput);
-
-    //历史代码
-    //给播放器设置音乐
-    //mediaPlayer->setSource(QUrl::fromLocalFile("C:\\Users\\28301\\Desktop\\Music\\Alex Goot,Madilyn Bailey - Something Just Like This.mp3"));
-    //播放(测试）
-    //mediaPlayer->play();
 
      //获取当前播放音乐总时长，通过信号关联来获取（同时增加滑块因素）
      connect(mediaplayer,&QMediaPlayer::durationChanged,this,[=](qint64 duration)
@@ -42,8 +36,9 @@ Widget::Widget(QWidget *parent)
     //拖动滑块改变进度
      connect(ui->pcslider,&QSlider::sliderMoved,mediaplayer,&QMediaPlayer::setPosition);
     //更改音量大小
-     audiooutput->setVolume(0.5);//[0,1]
-     connect(ui->voslider,&QSlider::sliderMoved,audiooutput,&QAudioOutput::setVolume);
+     //audiooutput->setVolume(0.5);//[0,1]
+     //connect(ui->voslider,&QSlider::sliderMoved,audiooutput,&QAudioOutput::setVolume);
+
 }
 
 Widget::~Widget()
@@ -59,7 +54,7 @@ void Widget::on_pushButton_clicked()
     qInfo()<<"导入本地音乐文件";
 
     //打开文件对话框，让用户选择音乐所在目录
-    auto path=QFileDialog::getExistingDirectory(this,"选择音乐所在目录""C://Users//28301//Desktop//Music");
+    auto path=QFileDialog::getExistingDirectory(this,"选择音乐所在目录""C:");
     //根据路径，获取其中所有音乐文件
     QDir dir(path);
     auto musicList=dir.entryList(QStringList()<<"*.mp3"<<"*.wav");//仅仅把音乐名字是在listWidget中展示
@@ -73,8 +68,6 @@ void Widget::on_pushButton_clicked()
     //将音乐完整路径保存起来（通过遍历音乐列表中中的所有音乐）
     for(auto file :musicList)
         playlist.append(QUrl::fromLocalFile(path+"/"+file));
-
-
 
 }
 
@@ -91,16 +84,19 @@ void Widget::on_pushButton_4_clicked()
         //播放对应音乐
         mediaplayer->setSource(playlist[cpindex]);
         mediaplayer->play();
+        ui->pushButton_4->setStyleSheet("background-image: url(:/C:/Users/28301/Desktop/assets/123907.png);");
         break;
     }
     case QMediaPlayer:: PlaybackState::PlayingState:
     {
         mediaplayer->pause();
+        ui->pushButton_4->setStyleSheet("background-image: url(:/C:/Users/28301/Desktop/assets/163649.png);");
         break;
     }
     case QMediaPlayer:: PlaybackState::PausedState:
     {
         mediaplayer->play();
+        ui->pushButton_4->setStyleSheet("background-image: url(:/C:/Users/28301/Desktop/assets/123907.png);");
         break;
     }
 
@@ -147,4 +143,23 @@ void Widget::on_listWidget_doubleClicked(const QModelIndex &index)
     mediaplayer->setSource(playlist[cpindex]);
     mediaplayer->play();
 }
+
+
+void Widget::on_pushButton_8_clicked()
+{
+    if(playlist.empty())
+    return;
+
+    if(audiooutput->volume()==0)
+    {audiooutput->setVolume(50);
+    ui->pushButton_8->setStyleSheet("background-image: url(:/C:/Users/28301/Desktop/assets/163804.png);");
+    }
+    else
+    {audiooutput->setVolume(0);
+    ui->pushButton_8->setStyleSheet("background-image: url(:/C:/Users/28301/Desktop/assets/175020.png);");
+    }
+}
+
+
+
 

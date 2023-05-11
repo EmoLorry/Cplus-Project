@@ -6,5 +6,19 @@
         <file>C:/Users/28301/Desktop/assets/163745.png</file>
         <file>C:/Users/28301/Desktop/assets/163804.png</file>
         <file>C:/Users/28301/Desktop/assets/163822.png</file>
+        <file>C:/Users/28301/Desktop/assets/123907.png</file>
+        <file>C:/Users/28301/Desktop/assets/175020.png</file>
+    </qresource>
+    <qresource prefix="/new/prefix1">
+        <file>C:/Users/28301/Desktop/assets/123907.png</file>
+        <file>C:/Users/28301/Desktop/assets/163418.png</file>
+        <file>C:/Users/28301/Desktop/assets/163633.png</file>
+        <file>C:/Users/28301/Desktop/assets/163649.png</file>
+        <file>C:/Users/28301/Desktop/assets/163745.png</file>
+        <file>C:/Users/28301/Desktop/assets/163804.png</file>
+        <file>C:/Users/28301/Desktop/assets/163822.png</file>
+        <file>C:/Users/28301/Desktop/assets/175020.png</file>
+        <file>C:/Users/28301/Desktop/assets/182712.png</file>
+        <file>C:/Users/28301/Desktop/assets/182746.png</file>
     </qresource>
 </RCC>
