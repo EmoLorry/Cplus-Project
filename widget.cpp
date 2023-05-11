@@ -142,6 +142,7 @@ void Widget::on_listWidget_doubleClicked(const QModelIndex &index)
     cpindex = index.row();
     mediaplayer->setSource(playlist[cpindex]);
     mediaplayer->play();
+    ui->pushButton_4->setStyleSheet("background-image: url(:/C:/Users/28301/Desktop/assets/123907.png);");
 }
 
 
