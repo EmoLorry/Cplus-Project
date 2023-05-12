@@ -7,4 +7,7 @@
         <file>C:/Users/28301/Desktop/assets/195146.png</file>
         <file>C:/Users/28301/Desktop/assets/200923.png</file>
     </qresource>
+    <qresource prefix="/new/prefix2">
+        <file>C:/Users/28301/Desktop/assets/wallhaven-yjww1l.jpg</file>
+    </qresource>
 </RCC>

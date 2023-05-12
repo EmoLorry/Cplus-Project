@@ -9,6 +9,7 @@
 #include <QUrl>
 #include <QTimer>
 
+
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
     , ui(new Ui::Widget)
@@ -19,14 +20,18 @@ Widget::Widget(QWidget *parent)
     setWindowIcon(QIcon("C:\\Users\\28301\\Desktop\\assets\\203839.png"));
     setWindowTitle("音乐播放器2.0");
 
-    //设置计时器
-    QTimer *timer=new QTimer(this);
-    connect(timer,SIGNAL(timeout()),this,SLOT(nextmusic()));
+    //给两个时长标签初始化，防止Qtimer激发nextmusic函数读取未初始化的标签导致程序崩溃
+    ui->labelc->setText("00:00");
+    ui->labels->setText("00:00");
+
+    //设置计时器,并启动
+    timer=new QTimer();
     timer->start(1000);
+    //connect(timer,SIGNAL(timeout()),this,SLOT(randommusic()));
 
     //先 new 出 output对象
      audiooutput =new  QAudioOutput(this);
-    //再一个媒体播放对象
+    //再 new 出一个媒体播放对象
      mediaplayer =new  QMediaPlayer(this);
      mediaplayer->setAudioOutput(audiooutput);
 
@@ -52,6 +57,49 @@ Widget::~Widget()
     delete ui;
 }
 
+//顺序模式
+void Widget::on_radioButton_2_clicked()
+{
+    if(playmodint==1)
+        disconnect(connection1);
+    if(playmodint==2)
+        disconnect(connection2);
+    if(playmodint==3)
+        disconnect(connection3);
+
+    connection1=connect(timer,SIGNAL(timeout()),this,SLOT(nextmusic()));
+    playmodint =1;
+}
+
+//随机模式
+void Widget::on_radioButton_3_clicked()
+{
+    if(playmodint==1)
+    disconnect(connection1);
+    if(playmodint==2)
+    disconnect(connection2);
+    if(playmodint==3)
+    disconnect(connection3);
+
+
+    connection2=connect(timer,SIGNAL(timeout()),this,SLOT(randommusic()));
+    playmodint =2;
+}
+
+//单曲循环
+void Widget::on_radioButton_clicked()
+{
+    if(playmodint==1)
+    disconnect(connection1);
+    if(playmodint==2)
+    disconnect(connection2);
+    if(playmodint==3)
+    disconnect(connection3);
+
+   connection3=connect(timer,SIGNAL(timeout()),this,SLOT(cyclemusic()));
+   playmodint =3;
+}
+
 void Widget::nextmusic()
 {
     if((ui->labelc->text()==ui->labels->text())&&ui->labels->text()!="00:00")
@@ -63,8 +111,28 @@ void Widget::nextmusic()
     }
 
 }
+void Widget::randommusic()
+{
+    if((ui->labelc->text()==ui->labels->text())&&ui->labels->text()!="00:00")
+    {
+        srand(time(NULL));
+        cpindex=rand()%playlist.size();
+        ui->listWidget->setCurrentRow(cpindex);
+        mediaplayer->setSource(playlist[cpindex]);
+        mediaplayer->play();
+    }
+}
 
-//
+void Widget::cyclemusic ()
+{
+    if((ui->labelc->text()==ui->labels->text())&&ui->labels->text()!="00:00")
+    {
+        mediaplayer->setSource(playlist[cpindex]);
+        mediaplayer->play();
+    }
+}
+
+//导入音乐所在的文件夹
 void Widget::on_pushButton_clicked()
 {
     qInfo()<<"导入本地音乐文件";
@@ -177,6 +245,7 @@ void Widget::on_pushButton_8_clicked()
     ui->pushButton_8->setStyleSheet("background-image: url(:/C:/Users/28301/Desktop/assets/175020.png);");
     }
 }
+
 
 
 

@@ -37,6 +37,16 @@ private slots:
 
     void nextmusic();
 
+    void randommusic();
+
+    void cyclemusic ();
+
+   void on_radioButton_2_clicked();
+
+   void on_radioButton_3_clicked();
+
+   void on_radioButton_clicked();
+
 private:
     Ui::Widget *ui;
     QList<QUrl> playlist;//播放列表
@@ -44,6 +54,9 @@ private:
     QMediaPlayer *mediaplayer;
     QTimer *timer;
     int cpindex=0;
-
+    int playmodint =0;
+    QMetaObject::Connection connection1;
+    QMetaObject::Connection connection2;
+    QMetaObject::Connection connection3;
 };
 #endif // WIDGET_H
