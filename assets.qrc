@@ -8,6 +8,10 @@
         <file>C:/Users/28301/Desktop/assets/163822.png</file>
         <file>C:/Users/28301/Desktop/assets/123907.png</file>
         <file>C:/Users/28301/Desktop/assets/175020.png</file>
+        <file>C:/Users/28301/Desktop/assets/wallhaven-yjww1l.png</file>
+        <file>C:/Users/28301/Desktop/assets/221037.png</file>
+        <file>C:/Users/28301/Desktop/assets/221118.png</file>
+        <file>C:/Users/28301/Desktop/assets/221434.png</file>
     </qresource>
     <qresource prefix="/new/prefix1">
         <file>C:/Users/28301/Desktop/assets/123907.png</file>
@@ -41,5 +45,53 @@
         <file>C:/Users/28301/Desktop/assets/200057.png</file>
         <file>C:/Users/28301/Desktop/assets/200408.png</file>
         <file>C:/Users/28301/Desktop/assets/200604.png</file>
+    </qresource>
+    <qresource prefix="/n">
+        <file>C:/Users/28301/Desktop/assets/221605.png</file>
+        <file>C:/Users/28301/Desktop/assets/222803.png</file>
+        <file>C:/Users/28301/Desktop/assets/223358.png</file>
+        <file>C:/Users/28301/Desktop/assets/223656.png</file>
+        <file>C:/Users/28301/Desktop/assets/223859.png</file>
+        <file>C:/Users/28301/Desktop/assets/224128.png</file>
+        <file>C:/Users/28301/Desktop/assets/224439.png</file>
+    </qresource>
+    <qresource prefix="/prefix4">
+        <file>C:/Users/28301/Desktop/assets/224128.png</file>
+        <file>C:/Users/28301/Desktop/assets/225116.png</file>
+        <file>C:/Users/28301/Desktop/assets/222803.png</file>
+        <file>C:/Users/28301/Desktop/assets/230940.png</file>
+        <file>C:/Users/28301/Desktop/assets/231047.png</file>
+        <file>C:/Users/28301/Desktop/assets/231250.png</file>
+    </qresource>
+    <qresource prefix="/new/prefix4">
+        <file>C:/Users/28301/Desktop/assets/231327.png</file>
+        <file>C:/Users/28301/Desktop/assets/233350.png</file>
+        <file>C:/Users/28301/Desktop/assets/233606.png</file>
+    </qresource>
+    <qresource prefix="/new/prefix5">
+        <file>C:/Users/28301/Desktop/assets/234518.png</file>
+        <file>C:/Users/28301/Desktop/assets/234948.png</file>
+        <file>C:/Users/28301/Desktop/assets/235109.png</file>
+        <file>C:/Users/28301/Desktop/assets/235255.png</file>
+        <file>C:/Users/28301/Desktop/assets/235418.png</file>
+        <file>C:/Users/28301/Desktop/assets/235528.png</file>
+        <file>C:/Users/28301/Desktop/assets/235939.png</file>
+        <file>C:/Users/28301/Desktop/assets/000400.png</file>
+        <file>C:/Users/28301/Desktop/assets/001105.png</file>
+        <file>C:/Users/28301/Desktop/assets/001249.png</file>
+        <file>C:/Users/28301/Desktop/assets/001954.png</file>
+        <file>C:/Users/28301/Desktop/assets/002106.png</file>
+        <file>C:/Users/28301/Desktop/assets/002605.png</file>
+        <file>C:/Users/28301/Desktop/assets/002710.png</file>
+        <file>C:/Users/28301/Desktop/assets/002907.png</file>
+        <file>C:/Users/28301/Desktop/assets/003046.png</file>
+        <file>C:/Users/28301/Desktop/assets/003342.png</file>
+        <file>C:/Users/28301/Desktop/assets/003515.png</file>
+        <file>C:/Users/28301/Desktop/assets/003700.png</file>
+        <file>C:/Users/28301/Desktop/assets/003853.png</file>
+        <file>C:/Users/28301/Desktop/assets/004025.png</file>
+        <file>C:/Users/28301/Desktop/assets/004136.png</file>
+        <file>C:/Users/28301/Desktop/assets/004607.png</file>
+        <file>C:/Users/28301/Desktop/assets/005441.png</file>
     </qresource>
 </RCC>

@@ -8,6 +8,7 @@
 #include <QtMultimedia/QtMultimedia>
 #include <QUrl>
 #include <QTimer>
+#include <QFrame>
 
 
 Widget::Widget(QWidget *parent)
@@ -18,7 +19,10 @@ Widget::Widget(QWidget *parent)
 
     //设置程序图标与小名称
     setWindowIcon(QIcon("C:\\Users\\28301\\Desktop\\assets\\203839.png"));
-    setWindowTitle("音乐播放器2.0");
+    setWindowTitle("音乐播放器2.1");
+
+    //设置ui中textBrowser的表现形式
+    ui->textBrowser->setStyleSheet("background:transparent;border-width:0;border->style:outset");
 
     //给两个时长标签初始化，防止Qtimer激发nextmusic函数读取未初始化的标签导致程序崩溃
     ui->labelc->setText("00:00");
@@ -50,12 +54,23 @@ Widget::Widget(QWidget *parent)
     //拖动滑块改变进度
      connect(ui->pcslider,&QSlider::sliderMoved,mediaplayer,&QMediaPlayer::setPosition);
 
+     //音量反映到竖直滑条
+     //connect(audiooutput,&QAudioOutput::volumeChanged,this,[=](float voposition)
+     //{
+     // ui->verticalSlider->setRange(0,50);
+     // ui->verticalSlider->setValue(voposition);
+     //}
+     //);
+     //竖直滑条反映音量
+     //connect(ui->verticalSlider,SIGNAL(QSlider::volumeChanged()),audiooutput,SLOT(QAudioOutput::setVolume()));
+
 }
 
 Widget::~Widget()
 {
     delete ui;
 }
+
 
 //顺序模式
 void Widget::on_radioButton_2_clicked()
@@ -168,19 +183,19 @@ void Widget::on_pushButton_4_clicked()
         //播放对应音乐
         mediaplayer->setSource(playlist[cpindex]);
         mediaplayer->play();
-        ui->pushButton_4->setStyleSheet("background-image: url(:/C:/Users/28301/Desktop/assets/123907.png);");
+        ui->pushButton_4->setStyleSheet("background-image: url(:/new/prefix5/C:/Users/28301/Desktop/assets/005441.png);");
         break;
     }
     case QMediaPlayer:: PlaybackState::PlayingState:
     {
         mediaplayer->pause();
-        ui->pushButton_4->setStyleSheet("background-image: url(:/C:/Users/28301/Desktop/assets/163649.png);");
+        ui->pushButton_4->setStyleSheet("background-image: url(:/new/prefix5/C:/Users/28301/Desktop/assets/004607.png);");
         break;
     }
     case QMediaPlayer:: PlaybackState::PausedState:
     {
         mediaplayer->play();
-        ui->pushButton_4->setStyleSheet("background-image: url(:/C:/Users/28301/Desktop/assets/123907.png);");
+        ui->pushButton_4->setStyleSheet("background-image: url(:/new/prefix5/C:/Users/28301/Desktop/assets/005441.png);");
         break;
     }
 
@@ -227,26 +242,22 @@ void Widget::on_listWidget_doubleClicked(const QModelIndex &index)
     cpindex = index.row();
     mediaplayer->setSource(playlist[cpindex]);
     mediaplayer->play();
-    ui->pushButton_4->setStyleSheet("background-image: url(:/C:/Users/28301/Desktop/assets/123907.png);");
+    ui->pushButton_4->setStyleSheet("background-image: url(:/new/prefix5/C:/Users/28301/Desktop/assets/005441.png);");
 }
 
 //声音开关键
 void Widget::on_pushButton_8_clicked()
 {
-    if(playlist.empty())
-    return;
 
     if(audiooutput->volume()==0)
     {audiooutput->setVolume(50);
-    ui->pushButton_8->setStyleSheet("background-image: url(:/C:/Users/28301/Desktop/assets/163804.png);");
+    ui->pushButton_8->setStyleSheet("background-image: url(:/prefix4/C:/Users/28301/Desktop/assets/224128.png);");
     }
     else
     {audiooutput->setVolume(0);
-    ui->pushButton_8->setStyleSheet("background-image: url(:/C:/Users/28301/Desktop/assets/175020.png);");
+    ui->pushButton_8->setStyleSheet("background-image: url(:/prefix4/C:/Users/28301/Desktop/assets/225116.png);");
     }
 }
-
-
 
 
 

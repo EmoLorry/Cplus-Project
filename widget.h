@@ -47,7 +47,9 @@ private slots:
 
    void on_radioButton_clicked();
 
-private:
+
+
+   private:
     Ui::Widget *ui;
     QList<QUrl> playlist;//播放列表
     QAudioOutput *audiooutput;
